@@ -1,5 +1,7 @@
 # TypeBuf
 
+[![CircleCI](https://circleci.com/gh/shanahanjrs/typebuf/tree/master.svg?style=svg)](https://circleci.com/gh/shanahanjrs/typebuf/tree/master)
+
 ---
 
 ### Dead simple way to define shared type definitions between applications

@@ -23,7 +23,7 @@ jobs:
 
       - run:
           name: Run tests
-          command: poetry run pytest --cov=typebuf tests/
+          command: poetry run pytest --cov=typebuf --cov-report=xml tests/
 
       - codecov/upload
 
