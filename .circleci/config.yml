@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.2
+  codecov: codecov/codecov@3.0.0
 
 jobs:
   build-and-test:
@@ -18,11 +19,13 @@ jobs:
       - run:
           name: Install Deps
           command: |
-            poetry install --dev
+            poetry install
 
       - run:
           name: Run tests
           command: poetry run pytest --cov=typebuf tests/
+
+      - codecov/upload
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
