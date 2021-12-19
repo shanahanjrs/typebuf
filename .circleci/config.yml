@@ -1,0 +1,35 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.2
+  codecov: codecov/codecov@3.2.2
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/python:3.9.7
+    # Checkout the code as the first step. This is a dedicated CircleCI step.
+    # The python orb's install-packages step will install the dependencies from a Pipfile via Pipenv by default.
+    # Here we're making sure we use just use the system-wide pip. By default it uses the project root's requirements.txt.
+    # Then run your tests!
+    # CircleCI will report the results back to your VCS provider.
+    steps:
+      - checkout
+
+      - run:
+          name: Install Deps
+          command: |
+            poetry install
+
+      - run:
+          name: Run tests
+          command: poetry run pytest --cov=typebuf --cov-report=xml tests/
+
+      - codecov/upload
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  test:
+    jobs:
+      - build-and-test
