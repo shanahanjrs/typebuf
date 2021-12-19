@@ -1,0 +1,34 @@
+---
+typedefs:
+  - typename: User
+    description: |
+      This is the User Type.
+      It has the fields first_name, last_name, age, and weight.
+      This is the description
+    fields:
+      - name: first_name
+        type: string
+        optional: false
+      - name: last_name
+        type: string
+        optional: false
+      - name: age
+        type: int
+        optional: false
+      - name: weight
+        type: float
+        optional: true
+  - typename: Dog
+    fields:
+      - name: name
+        type: string
+        optional: false
+      - name: age
+        type: int
+        optional: false
+      - name: weight
+        type: float
+        optional: true
+      - name: owner
+        type: $User # example of a literal
+        optional: false

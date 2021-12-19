@@ -1,0 +1,18 @@
+---
+typedefs:
+  - typename: Address
+    fields:
+      - name: street_address_1
+        type: string
+        optional: false
+      - name: street_address_2
+        type: string
+        optional: true
+      - name: postal_code
+        type: int
+      - name: state
+        type: string
+      - name: user
+        # type literal: Imports _may_ have to be manually added in some cases
+        type: $User
+        optional: false
