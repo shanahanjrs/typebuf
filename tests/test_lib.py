@@ -9,6 +9,8 @@ from typebuf.lib import (
 
 from pytest import raises
 
+TEST_YAML = 'tests/test_yaml.yaml'
+
 
 def test_typefield():
     tf_a = TypeField(name='user', type='User', optional=True)
@@ -79,16 +81,16 @@ def test_ir():
 
 def test_typebuf():
     client = TypeBuf(
-        filename='tests/test_yaml.yaml',
+        filename=TEST_YAML,
         languages=('python', 'typescript'),
         quiet=False
     )
-    assert client.filename == 'tests/test_yaml.yaml'
+    assert client.filename == TEST_YAML
     assert client.languages == ('python', 'typescript')
     assert not client.quiet
     assert client.intermediate_representation
     assert client.__dict__() == {
-        'filename': 'tests/test_yaml.yaml',
+        'filename': TEST_YAML,
         'languages': ('python', 'typescript'),
         'IR': {
             'typedefs': [

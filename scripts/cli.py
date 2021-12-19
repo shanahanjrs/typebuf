@@ -22,6 +22,7 @@ def click_log(fn):
 @click.group()
 @click_log
 def cli():
+    # This is just to create a click group name for other args
     pass
 
 
@@ -36,8 +37,5 @@ def _help():
 @click.option('-q', default=False, show_default=True, is_flag=True, help='Quiet mode')
 @click_log
 def _compile(f, l, q):
-    # print('>> f: %s' % f)
-    # print('>> l: %s' % str(l))
-    # print('>> q: %s' % str(q))
     typebuf: TypeBuf = TypeBuf(filename=f, languages=l, quiet=q)
     typebuf.compile()
