@@ -7,7 +7,7 @@
 
 ---
 
-### Dead simple way to define shared type definitions between applications
+### Dead simple way to create shared type definitions between applications
 
 - Other tools have too much setup? Too much boilerplate? Do too much "magic"? Just:
   - Define your Types in `types.yaml`
