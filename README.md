@@ -100,3 +100,17 @@ interface User {
       - name: _string_
       - type: _string_
       - optional: _boolean_
+
+- In a type definition you can also specify custom/required _imports_ for any depedencies your classes may need:
+  - ```
+    typedefs:
+      - typename: Address
+        imports:
+          python:
+            - 'from mymodule.user import User'
+            - 'from typing import Optional'
+          typescript:
+            - 'import { User } from "./User";'
+        fields:
+          - ...
+    ```

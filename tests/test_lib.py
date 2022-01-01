@@ -49,6 +49,7 @@ def test_typedefinition():
     td_a = TypeDefinition(typename='User', fields=[])
     assert td_a.__dict__ == {
         'typename': 'User',
+        'imports': None,
         'fields': []
     }
 
@@ -71,12 +72,41 @@ def test_ir():
     assert ir_a.typedef_c == 1
     assert ir_a.typedefs[0] == {
         'typename': 'User',
+        'imports': None,
         'fields': [
             {'name': 'first_name', 'type': 'string', 'optional': False},
             {'name': 'last_name', 'type': 'string', 'optional': False},
             {'name': 'age', 'type': 'int', 'optional': False},
             {'name': 'weight', 'type': 'float', 'optional': True}]
         }
+
+
+def test_ir_with_custom_imports():
+    ir_a = IR(**{'typedefs': [
+        {'typename': 'User',
+         'imports': {
+             'python': ['import os', 'import sys']
+         },
+         'fields': [
+             {'name': 'first_name', 'type': 'string', 'optional': False},
+             {'name': 'last_name', 'type': 'string', 'optional': False},
+             {'name': 'age', 'type': 'int', 'optional': False},
+             {'name': 'weight', 'type': 'float', 'optional': True}]
+         }
+    ]
+    })
+    assert ir_a.typedef_c == 1
+    assert ir_a.typedefs[0] == {
+        'typename': 'User',
+        'imports': {
+            'python': ['import os', 'import sys']
+        },
+        'fields': [
+            {'name': 'first_name', 'type': 'string', 'optional': False},
+            {'name': 'last_name', 'type': 'string', 'optional': False},
+            {'name': 'age', 'type': 'int', 'optional': False},
+            {'name': 'weight', 'type': 'float', 'optional': True}]
+    }
 
 
 def test_typebuf():
@@ -94,7 +124,9 @@ def test_typebuf():
         'languages': ('python', 'typescript'),
         'IR': {
             'typedefs': [
-                {'typename': 'Address', 'fields': [{'name': 'street_address_1', 'type': 'string', 'optional': False},
+                {'typename': 'Address',
+                 'imports': None,
+                 'fields': [{'name': 'street_address_1', 'type': 'string', 'optional': False},
                                            {'name': 'street_address_2', 'type': 'string', 'optional': True},
                                            {'name': 'postal_code', 'type': 'int', 'optional': False},
                                            {'name': 'state', 'type': 'string', 'optional': False},

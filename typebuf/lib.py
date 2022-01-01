@@ -21,6 +21,7 @@ class TypeDefinition(BaseModel):
     """
     Represents one new Type in the list of typedefs
     {'typename': 'User',
+     'imports': ...,
      'fields': [
         {'name': 'first_name', 'type': 'string', 'optional': False},
         {'name': 'last_name', 'type': 'string', 'optional': False},
@@ -29,7 +30,8 @@ class TypeDefinition(BaseModel):
     }
     """
     typename: str
-    fields: List[TypeField]
+    imports: Optional[dict[str, list[str]]]
+    fields: list[TypeField]
 
 
 class IR(BaseModel):
@@ -37,6 +39,7 @@ class IR(BaseModel):
     Intermediate Representation of the entire file that was passed in
     {'typedefs': [
         {'typename': 'User',
+         'imports': ...,
          'fields': [
              {'name': 'first_name', 'type': 'string', 'optional': False},
              {'name': 'last_name', 'type': 'string', 'optional': False},

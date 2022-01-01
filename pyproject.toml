@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "typebuf"
-version = "0.1.2"
+version = "0.1.3"
 description = "Dead simple way to define shared type definitions between applications"
 authors = ["John Shanahan <shanahan.jrs@gmail.com>"]
 license = "Apache-2.0"
@@ -23,6 +23,7 @@ pydantic = "^1.8.2"
 invoke = "^1.6.0"
 pytest = "^6.2.5"
 pytest-cov = "^3.0.0"
+mypy = "^0.930"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

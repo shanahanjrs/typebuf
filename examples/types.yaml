@@ -1,6 +1,12 @@
 ---
 typedefs:
   - typename: Address
+    imports:
+      python:
+        - 'from typing import Optional'
+        - 'from mymodule.user import User'
+      typescript:
+        - 'import { User } from "./User";'
     fields:
       - name: street_address_1
         type: string
@@ -13,6 +19,5 @@ typedefs:
       - name: state
         type: string
       - name: user
-        # type literal: Imports _may_ have to be manually added in some cases
-        type: $User
+        type: $User  # Type literal
         optional: false

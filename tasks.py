@@ -3,4 +3,4 @@ from invoke import task
 
 @task
 def test(c):
-    c.run('pytest --cov=typebuf --cov-report=html', pty=True)
+    c.run('pytest -vvv --cov=typebuf --cov-report=html', pty=True)

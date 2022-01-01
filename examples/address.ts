@@ -4,6 +4,8 @@
  *       during next compilation
  */
 
+import { User } from "./User";
+
 interface Address {
   street_address_1: string;
   street_address_2?: string;

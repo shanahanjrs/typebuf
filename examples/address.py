@@ -4,8 +4,8 @@ Note: Any changes made to this file will be overwritten
       during next compilation
 """
 
-from typing import *
-
+from typing import Optional
+from mymodule.user import User
 
 class Address:
     street_address_1: str
