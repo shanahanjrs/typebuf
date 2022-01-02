@@ -18,6 +18,8 @@
 
 `pip install typebuf`
 
+`poetry add --dev typebuf`
+
 
 ## Quickstart
 
@@ -30,10 +32,13 @@
 ---
 typedefs:
   - typename: User
+    imports:
+      python:
+        - 'from typing import Optional'
     fields:
       - name: first_name
         type: string
-        optional: false
+        optional: true
       - name: age
         type: int
         optional: true
@@ -54,7 +59,7 @@ Note: Any changes made to this file will be overwritten
       during next compilation
 """
 
-from typing import *
+from typing import Optional
 
 
 class User:
@@ -83,7 +88,7 @@ interface User {
 
 ## Demo
 
-> Here's a quick demo of me using TypeBuf. First I show the contents of the _types.yaml_ file
+> Here's a quick demo of me using TypeBuf 0.1.1. First I show the contents of the _types.yaml_ file
 > then I generate Python and TypeScript source code and show the contents of the new files
 
 [![asciicast](https://asciinema.org/a/KRGKPMQ1HCd3OtwJbLvHYWUlJ.svg)](https://asciinema.org/a/KRGKPMQ1HCd3OtwJbLvHYWUlJ)
@@ -91,14 +96,14 @@ interface User {
 
 ## Documentation
 
-- Reads only a file named `types.yaml` (for now)
 - Inside that file there is an array called `typedefs`. This is where you add your shared type definitions
-- Each type will have the following fields:
-  - `typename: string`
-  - `fields: array[Field]`
+- Each type can have the following fields (required fields in **bold**):
+  - **typename**: _string_
+  - imports: _map[string, array[str]]_
+  - **fields**: _array[Field]_
     - A `Field` has the following attributes:
-      - name: _string_
-      - type: _string_
+      - **name**: _string_
+      - **type**: _string_
       - optional: _boolean_
 
 - In a type definition you can also specify custom/required _imports_ for any depedencies your classes may need:
@@ -112,5 +117,5 @@ interface User {
           typescript:
             - 'import { User } from "./User";'
         fields:
-          - ...
+          - ...,
     ```
