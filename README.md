@@ -1,5 +1,6 @@
 # TypeBuf
 
+[![Downloads](https://static.pepy.tech/personalized-badge/typebuf?period=total&units=international_system&left_color=black&right_color=brightgreen&left_text=Installs)](https://pepy.tech/project/typebuf)
 [![PyPI version](https://badge.fury.io/py/typebuf.svg)](https://badge.fury.io/py/typebuf)
 [![CircleCI](https://circleci.com/gh/shanahanjrs/typebuf/tree/master.svg?style=svg)](https://circleci.com/gh/shanahanjrs/typebuf/tree/master)
 [![codecov](https://codecov.io/gh/shanahanjrs/typebuf/branch/master/graph/badge.svg?token=9J1OCNHSZF)](https://codecov.io/gh/shanahanjrs/typebuf)
