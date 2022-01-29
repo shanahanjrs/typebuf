@@ -5,6 +5,9 @@ typedefs:
       This is the User Type.
       It has the fields first_name, last_name, age, and weight.
       This is the description
+    imports:
+      python[pydantic]:
+        - "from typing import Union, Optional"
     fields:
       - name: first_name
         type: string
@@ -18,6 +21,8 @@ typedefs:
       - name: weight
         type: float
         optional: true
+      - name: postal_code
+        type: int | string
   - typename: Dog
     fields:
       - name: name

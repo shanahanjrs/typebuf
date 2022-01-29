@@ -42,7 +42,11 @@ class TypeBuf:
                 transformer = transformer_class(typedef)
                 transformer.generate_filename()
                 for fn in transformer.method_order:
-                    transformer.output_buf += fn()
+                    val = fn()
+                    if not self.quiet:
+                        print(fn)
+                        print(f'val: {val}')
+                    transformer.output_buf += val
                 transformers.append(transformer)
 
         # Loop through each Transformer we prepared and start writing

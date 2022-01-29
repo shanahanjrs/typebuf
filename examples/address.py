@@ -4,12 +4,12 @@ Note: Any changes made to this file will be overwritten
       during next compilation
 """
 
-from typing import Optional
+from typing import Optional, Union
 from mymodule.user import User
 
 class Address:
     street_address_1: str
     street_address_2: Optional[str]
-    postal_code: int
+    postal_code: Union[int, str]
     state: str
     user: User

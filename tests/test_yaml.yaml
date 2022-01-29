@@ -9,7 +9,7 @@ typedefs:
         type: string
         optional: true
       - name: postal_code
-        type: int
+        type: int | string
       - name: state
         type: string
       - name: user

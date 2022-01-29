@@ -9,7 +9,7 @@ import { User } from "./User";
 interface Address {
   street_address_1: string;
   street_address_2?: string;
-  postal_code: number;
+  postal_code: number | string;
   state: string;
   user: User;
 }

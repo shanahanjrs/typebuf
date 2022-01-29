@@ -124,11 +124,17 @@ def test_typebuf():
             'typedefs': [
                 {'typename': 'Address',
                  'imports': None,
-                 'fields': [{'name': 'street_address_1', 'type': 'string', 'optional': False},
-                                           {'name': 'street_address_2', 'type': 'string', 'optional': True},
-                                           {'name': 'postal_code', 'type': 'int', 'optional': False},
-                                           {'name': 'state', 'type': 'string', 'optional': False},
-                                           {'name': 'user', 'type': '$User', 'optional': False}]}]}}
+                 'fields': [
+                     {'name': 'street_address_1', 'type': 'string', 'optional': False},
+                     {'name': 'street_address_2', 'type': 'string', 'optional': True},
+                     {'name': 'postal_code', 'type': 'int | string', 'optional': False},
+                     {'name': 'state', 'type': 'string', 'optional': False},
+                     {'name': 'user', 'type': '$User', 'optional': False}
+                 ]
+                 }
+            ]
+        }
+    }
     client.compile()
     assert os.path.exists('address.py')
     assert os.path.exists('address.ts')

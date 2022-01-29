@@ -65,19 +65,24 @@ class TypeScriptTransformer(BaseTransformer):
         if self.C.LANG in self.typedef.imports:
             return '\n'.join(self.typedef.imports[self.C.LANG]) + '\n\n'
 
-    def generate_top_comment(self):
+        return ''
+
+    def generate_top_comment(self) -> str:
         return self.C.TOP_COMMENT.format(
             classname=self.typedef.typename.capitalize()
         )
 
-    def generate_class_declaration(self):
+    def generate_class_declaration(self) -> str:
         return self.C.CLASS_DEF.format(
             classname=self.typedef.typename, attributeblock=self.generate_attributes()
         )
 
-    def generate_type_annotation(self, attribute_type):
+    def generate_type_annotation(self, attribute_type) -> str:
         if attribute_type.startswith('$'):
             return attribute_type[1:]
+        if '|' in attribute_type:
+            attribute_types = [self.C.TYPE_TRANSLATIONS[a.strip()] for a in attribute_type.split('|')]
+            return ' | '.join(attribute_types)
         return self.C.TYPE_TRANSLATIONS[attribute_type]
 
     def generate_attributes(self) -> str:
