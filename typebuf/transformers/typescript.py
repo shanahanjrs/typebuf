@@ -55,8 +55,6 @@ class TypeScriptTransformer(BaseTransformer):
         )
 
     def generate_imports(self) -> str:
-        # Figure out a good way to do this
-        # Cheat for now
         """
         Will scan the typedef for any imports we might need to do and return the import str
         :param typedef:
@@ -84,6 +82,7 @@ class TypeScriptTransformer(BaseTransformer):
 
     def generate_attributes(self) -> str:
         output_str = ''
+
         for attribute in self.typedef.fields:
             ws = self.C.WS
             optional = self.C.OPTIONAL if attribute.optional else ''
@@ -93,4 +92,5 @@ class TypeScriptTransformer(BaseTransformer):
                 ws=ws, attrname=attrname, optional=optional,
                 typeannotation=typeannotation
             )
+
         return output_str
