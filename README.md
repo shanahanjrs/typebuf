@@ -24,7 +24,7 @@
 
 ## Quickstart
 
-1. Create a file called `types.yaml`, it can be anywhere in your project repo
+1. Create a file called `types.yaml`, it can be anywhere in your projects repo
  
 
 2. Add the following lines to the newly created file:
