@@ -1,63 +1,8 @@
-from pydantic import BaseModel
-from typing import Optional, List
-
-from .transformers import get_transformer_class, TokenT
+from .transformers import get_transformer_class
 from .fs import load_from_yaml
+from .models.ir import IR
 
 FILENAME: str = "types.yaml"
-
-
-class TypeField(BaseModel):
-    """
-    Represents one Field in a Type
-    {'name': 'first_name', 'type': 'string', 'optional': False},
-    """
-    name: str
-    type: str
-    optional: Optional[bool] = False
-
-
-class TypeDefinition(BaseModel):
-    """
-    Represents one new Type in the list of typedefs
-    {'typename': 'User',
-     'imports': ...,
-     'fields': [
-        {'name': 'first_name', 'type': 'string', 'optional': False},
-        {'name': 'last_name', 'type': 'string', 'optional': False},
-        {'name': 'age', 'type': 'int', 'optional': False},
-        {'name': 'weight', 'type': 'float', 'optional': True} ]
-    }
-    """
-    typename: str
-    imports: Optional[dict[str, list[str]]]
-    fields: list[TypeField]
-
-
-class IR(BaseModel):
-    """
-    Intermediate Representation of the entire file that was passed in
-    {'typedefs': [
-        {'typename': 'User',
-         'imports': ...,
-         'fields': [
-             {'name': 'first_name', 'type': 'string', 'optional': False},
-             {'name': 'last_name', 'type': 'string', 'optional': False},
-             {'name': 'age', 'type': 'int', 'optional': False},
-             {'name': 'weight', 'type': 'float', 'optional': True} ]
-         }
-      ]
-    }
-    """
-    typedefs: List[TypeDefinition]
-
-    @property
-    def typedef_c(self) -> int:
-        """
-        Count of type definitions we read
-        :return: (int)
-        """
-        return len(self.typedefs)
 
 
 class TypeBuf:

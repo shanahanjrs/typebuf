@@ -1,11 +1,9 @@
 import os
 
-from typebuf.lib import (
-    TypeField,
-    TypeDefinition,
-    IR,
-    TypeBuf
-)
+from typebuf.models.typefield import TypeField
+from typebuf.models.typedefinition import TypeDefinition
+from typebuf.models.ir import IR
+from typebuf.lib import TypeBuf
 
 from pytest import raises
 

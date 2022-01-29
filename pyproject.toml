@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "typebuf"
-version = "0.1.3"
+version = "0.1.4"
 description = "Dead simple way to define shared type definitions between applications"
 authors = ["John Shanahan <shanahan.jrs@gmail.com>"]
 license = "Apache-2.0"
