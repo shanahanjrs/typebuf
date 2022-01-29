@@ -24,7 +24,7 @@
 
 ## Quickstart
 
-1. Create a file called `types.yaml`, it can be anywhere, like your project's root dir
+1. Create a file called `types.yaml`, it can be anywhere in your project repo
  
 
 2. Add the following lines to the newly created file:
@@ -39,7 +39,6 @@ typedefs:
     fields:
       - name: first_name
         type: string
-        optional: true
       - name: age
         type: int
         optional: true
@@ -97,7 +96,7 @@ interface User {
 
 ## Documentation
 
-- Inside that file there is an array called `typedefs`. This is where you add your shared type definitions
+- Inside _types.yaml_ there is an array called `typedefs`. This is where you add your shared type definitions
 - Each type can have the following fields (required fields in **bold**):
   - **typename**: _string_
   - imports: _map[string, array[str]]_
