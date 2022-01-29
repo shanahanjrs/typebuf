@@ -104,10 +104,35 @@ interface User {
     - A `Field` has the following attributes:
       - **name**: _string_
       - **type**: _string_
+        - a _type_ can be any one of:
+          - any
+          - string
+          - int
+          - float
+          - boolean
+          - bytes
+          - date
+          - datetime
+          - map
+          - array
+          - tuple
+          - null
+          - double
+          - sint8
+          - sint16
+          - sint32
+          - sint64
+          - uint8
+          - uint16
+          - uint32
+          - uint64
+        - union types are also _experimentally_ supported:
+          -  int | string
       - optional: _boolean_
 
 - In a type definition you can also specify custom/required _imports_ for any depedencies your classes may need:
   - ```
+    ---
     typedefs:
       - typename: Address
         imports:
